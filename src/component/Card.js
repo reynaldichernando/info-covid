@@ -5,8 +5,8 @@ class Card extends React.Component {
     render() {
         return (
             <div className="card">
-                <div>{this.props.count}</div>
-                <div>{this.props.info}</div>
+                <h2>{this.props.count}</h2>
+                <h3>{this.props.info}</h3>
             </div>
         );
     }

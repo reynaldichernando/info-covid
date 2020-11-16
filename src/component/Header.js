@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 function Header() {
     return (
-        <header className="App-header">
-            <div>Logo</div>
+        <header className="app-header">
             <nav>
                 <ul>
+                    <li>Logo</li>
                     <li>
                         <Link to="/">Beranda</Link>
                     </li>
