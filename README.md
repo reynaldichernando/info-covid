@@ -3,6 +3,8 @@
 ## Description
 Single page application for displaying COVID-19 cases in Indonesia, using React library with BrowserRouter and public API.
 
+[Live Demo](https://reynaldichernando.github.io/info-covid)
+
 ## Installation
 Use the npm to install packages.
 ```
