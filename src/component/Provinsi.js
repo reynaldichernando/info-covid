@@ -3,39 +3,76 @@ import React from 'react';
 import Tile from './Tile';
 
 class Provinsi extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: [],
+            searchData: [],
+        }
+    }
+
+    componentDidMount() {
+        fetch("https://indonesia-covid-19.mathdro.id/api/provinsi")
+            .then(res => res.json())
+            .then(result => {
+                // console.log(result);
+                this.setState({
+                    data: result.data,
+                    searchData: result.data,
+                })
+            })
+    }
+
+    handleChange = (event) => {
+        let query = event.target.value;
+        const {data, searchData} = this.state;
+        if(query === '' || query === null) {
+            this.setState({
+                data: data,
+                searchData: data
+            })
+        }
+        else {
+            let tempSearchData = searchData.filter(element => {
+                return element.provinsi.toLowerCase().includes(query);
+            })
+            this.setState({
+                data: data,
+                searchData: tempSearchData
+            })
+        }
+    }
 
     render() {
-        /* TODO: map list provinsi from API */
-        const item = [
-            {
-                id: 1,
-                name: "DKI Jakarta",
-                positive: 1000,
-                recovered: 1234,
-                death: 100
-            },
-            {
-                id: 2,
-                name: "Jawa Timur",
-                positive: 5348,
-                recovered: 432978,
-                death: 342
-            },
-            {
-                id: 3,
-                name: "Jawa Barat",
-                positive: 523,
-                recovered: 8943,
-                death: 328
-            },
-        ];
+        const { searchData } = this.state;
+        let i = 1;
         return (
-            <div className="provinsi">
-                <input type="text" placeholder="Search"/>
-                <Tile item={item[0]}/>
-                <Tile item={item[1]}/>
-                <Tile item={item[2]}/>
-            </div>
+            <>
+                <div className="search-text">
+                    <input id="search-provinsi" type="text" onChange={this.handleChange} />
+                </div>
+                <div className="provinsi">
+                    {
+                        searchData.map(element => {
+                            let item = {
+                                id: i,
+                                name: element.provinsi,
+                                positive: element.kasusPosi,
+                                recovered: element.kasusSemb,
+                                death: element.kasusMeni
+                            }
+                            // because Indonesia is not a provinsi
+                            if(item.name === 'Indonesia') {
+                                return null;
+                            }
+                            i++;
+                            return (
+                                <Tile key={i} item={item} />
+                            )
+                        })
+                    }
+                </div>
+            </>
         );
     }
 }

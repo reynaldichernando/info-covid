@@ -1,0 +1,22 @@
+.search-text {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#search-provinsi {
+    margin: 30px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: lightgray;
+    border: 0;
+    width: 200px;
+    height: 2rem;
+}
+
+.provinsi {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}

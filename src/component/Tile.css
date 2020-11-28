@@ -1,0 +1,28 @@
+.tile {
+    background-color: lightgray;
+    margin: 20px;
+    padding: 15px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.tile-head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 20px;
+    font-weight: bold;
+}
+
+.tile-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+}
+
+
+.tile-body td {
+    padding: 10px;
+}
