@@ -25,7 +25,7 @@ class Provinsi extends React.Component {
 
     handleChange = (event) => {
         let query = event.target.value;
-        const {data, searchData} = this.state;
+        const {data} = this.state;
         if(query === '' || query === null) {
             this.setState({
                 data: data,
@@ -33,7 +33,7 @@ class Provinsi extends React.Component {
             })
         }
         else {
-            let tempSearchData = searchData.filter(element => {
+            let tempSearchData = data.filter(element => {
                 return element.provinsi.toLowerCase().includes(query);
             })
             this.setState({
